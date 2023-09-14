@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <style>
+                *{margin:0px;}
+                 body{
+                    overflow-x:hidden;
+                    overflow-y:auto;
+                    margin-top:30px;
+                    background-image:linear-gradient(45deg, rgb(0 255 184), rgb(247 0 217));
+                    width:100vw;
+                    height:auto;
+                    min-height:100vh;
+                }
+                .only{
+                    margin:50px;
+                    font-size: 3rem;
+                    display:flex;
+                    flex-direction:column;
+                    align-items:center;
+                    justify-content: center;
+                }
+                .heading{
+                    margin:50px;
+                    font-size:6rem;
+                }
+                .normal{
+                    margin:30px;
+                }
+                h1{
+                    font-size:4rem;
+                }
+                td{
+                    text-align:center;
+                }
+            </style>
+        </head>
+        <body>
+        <h1 style="text-align:center;">Dr. TARUN KUMAR</h1>
+            <div class="only">
+            <table id="table" border="5">
+                <tr>
+                    <th>Name</th>
+                    <th>SAP ID</th>
+                    <th>Subject Code</th>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                </tr>
+            </table>
+            </div>
+            <script>
+                fetch("/TKdata")
+                    .then(res=>res.json())
+                    .then(data=>work(data))
+                    .catch(err=>console.log(err));
+                work=data=>{
+                data.forEach(ele=>{
+                    tr=document.createElement("tr");
+                    td1=document.createElement("td");
+                    td2=document.createElement("td");
+                    td3=document.createElement("td");
+                    td4=document.createElement("td");
+                    td5=document.createElement("td");
+                    td1.append(ele.name);
+                    td2.append(ele.Sap_Id);
+                    td3.append(ele.Sub_code);
+                    td4.append(ele.recommended);
+                    td5.append(ele.comment);
+                    tr.append(td1);
+                    tr.append(td2);
+                    tr.append(td3);
+                    tr.append(td4);
+                    tr.append(td5);
+                    table.append(tr);
+                });
+                }
+            </script>
+        </body>
+        </html>
